@@ -16,9 +16,3 @@ namespace IndependentContracts.Models
     public virtual ICollection<ClientContractor> Contractors {get;set;}
   }
 }
-
-
- <div class="form-group">
-    @Html.LabelFor(model => model.Birthday)
-    @Html.TextBoxFor(model => model.Birthday, new { @class = "form-control", @type="date", @require = true})
-  </div>
