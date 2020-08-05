@@ -12,7 +12,7 @@ namespace IndependentContracts.Models
     }
     public int ClientId {get;set;}
     public string Name {get;set;}
-    public DateTime accountCreationDate {get;set;}
+    public DateTime accountCreationDate {get;set;} = DateTime.Now;
     public virtual ICollection<ClientContractor> Contractors {get;set;}
   }
 }
