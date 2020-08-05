@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model IndependentContracts.Models.Client
+
+<h4>Add a new client</h4>
+@using (Html.BeginForm())
+{
+  <div class="form-group">
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @required = true})
+  </div>
+
+  <input type="submit" value="Add new client" />
+}
+<p>@Html.ActionLink("Show all Clients", "Index")</p>
+
+
+
+

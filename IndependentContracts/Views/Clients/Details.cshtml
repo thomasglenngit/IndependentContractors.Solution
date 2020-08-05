@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@using IndependentContracts.Models;
+@model IndependentContracts.Models.Client;
+
+<h2>Client Details</h2>
+<hr />
+<h3>@Model.Name</h3>
+<hr />
+<ul>
+@if (@Model.Contractors.Count == 0)
+{
+  <p>This client does not contain any contractors.</p>
+}
+else
+{
+  <h4>Contractors</h4>
+  @foreach(var join in Model.Contractors)
+  {
+    <li>@Html.ActionLink($"{@join.Contractor.Alias}, {@join.Contractor.RegionOfOperation}, {@join.Contractor.WeaponOfChoice}", "Details", "Contractors", new {id = join.ContractorId})</li>
+  }
+  <hr />
+  @* <h4>Specialties</h4>
+  @foreach(var join in Model.Specialties)
+  {
+    <li>@Html.ActionLink(@join.Specialty.SpecialtyName, "Details", "Specialties", new {id = join.SpecialtyId})</li>
+  } *@
+}
+<hr />
+<p>@Html.ActionLink("Back to Clients", "Index")</p>
+<p>@Html.ActionLink("Edit Client", "Edit", new { id = Model.ClientId })</p>
+@* <p>@Html.ActionLink("Add a Specialty", "AddSpecialty", new { id = Model.ClientId })</p> *@
+<p>@Html.ActionLink("Delete Client", "Delete", new { id = Model.ClientId })</p>
