@@ -1,13 +1,12 @@
 air Salon
 C#/.NET Project for Epicodus, 2020.07.31
-By Thomas Glenn
+By Tyson Lackey and Thomas Glenn
 
 
 Description
-A code review program for Epicodus school, which tracks the stylists and clients for "Claire", the owner of "Eau Claire Salon".
+An interface for independent contractors to organize their contracts with bosses (in a many-to-many-to-many relationship).
 
-Specifications
-| Spec | Input | Output | |:--------- |:--------- |:-------- |:---------| | The program will construct a stylists catalogue allowing Claire to make entries | "Name", "ID" | "Marjory Smith" "1"| | The program will construct a clients catalogue allowing Claire to make entries | "Name" "Mobile Number" | "Jessica" "123-456-7890" | | The program will allow Claire to view lists of Stylists with Clients | "Marjory" -- "Jessica" | | The program will allow Claire to edit entries | "Marjory Smith" | "Marjory Smythe" | The program will allow the Clair to delete entries | "Marjory Smythe" | " " |
+
 
 Known Bugs
 No known bugs.
