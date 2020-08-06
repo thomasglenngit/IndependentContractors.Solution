@@ -26,6 +26,8 @@ namespace IndependentContracts.Controllers
       var thisContractor = _db.Contractors
           .Include(contractor => contractor.Clients)
           .ThenInclude(join => join.Client)
+          .Include(contractor=>contractor.Armories)
+          .ThenInclude(join=>join.Armory)
           .FirstOrDefault(contractor => contractor.ContractorId == id);
       return View(thisContractor);
     }
@@ -108,6 +110,13 @@ namespace IndependentContracts.Controllers
     [HttpPost]
     public ActionResult AddArmory(Contractor contractor, int ArmoryId)
     {
+      var testvariable = _db.ContractorArmory.FirstOrDefault(join=>join.ArmoryId == ArmoryId && join.ContractorId == contractor.ContractorId);
+
+      if(testvariable != null)
+      {
+      return RedirectToAction("Details", new {id=contractor.ContractorId});
+      }
+
       if (ArmoryId != 0)
       {
       _db.ContractorArmory.Add(new ContractorArmory() { ArmoryId = ArmoryId, ContractorId = contractor.ContractorId });
@@ -122,7 +131,7 @@ namespace IndependentContracts.Controllers
       var joinEntry = _db.ContractorArmory.FirstOrDefault(entry => entry.ContractorArmoryId == joinId);
       _db.ContractorArmory.Remove(joinEntry);
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return RedirectToAction("Details", new {id=joinEntry.ContractorId});
     }
   }
 }
