@@ -97,5 +97,32 @@ namespace IndependentContracts.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult AddArmory(int id)
+    {
+      var thisContractor = _db.Contractors.FirstOrDefault(contractors => contractors.ContractorId == id);
+      ViewBag.ArmoryId = new SelectList(_db.Armories, "ArmoryId", "WeaponName");
+      return View(thisContractor);
+    }
+
+    [HttpPost]
+    public ActionResult AddArmory(Contractor contractor, int ArmoryId)
+    {
+      if (ArmoryId != 0)
+      {
+      _db.ContractorArmory.Add(new ContractorArmory() { ArmoryId = ArmoryId, ContractorId = contractor.ContractorId });
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Details", new {id=contractor.ContractorId});
+    }
+
+    [HttpPost]
+    public ActionResult DeleteArmory(int joinId)
+    {
+      var joinEntry = _db.ContractorArmory.FirstOrDefault(entry => entry.ContractorArmoryId == joinId);
+      _db.ContractorArmory.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }

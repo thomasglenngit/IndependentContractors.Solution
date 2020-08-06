@@ -10,11 +10,11 @@
 
 @using (Html.BeginForm())
 {
-  
+
     @Html.HiddenFor(model => model.ClientId)
 
     @Html.Label("Select Contractor")
-    @Html.DropDownList("ContractorId")
+    @Html.DropDownList("ContractorId", null, new {@class = "form-control"})
 
     <input type="submit" value="Save" class="btn btn-primary" />
 }

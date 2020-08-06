@@ -10,12 +10,12 @@
 
 @using (Html.BeginForm())
 {
-    @Html.HiddenFor(model => model.ContractorId)
+  @Html.HiddenFor(model => model.ContractorId)
 
-    @Html.Label("Select Weapon")
-    @Html.DropDownList("ArmoryId")
+  @Html.Label("Select Weapon")
+  @Html.DropDownList("ArmoryId", null, new {@class = "form-control"})
 
-    <input type="submit" value="Save" class="btn btn-primary" />
+  <input type="submit" value="Save" class="btn btn-primary" />
 }
 
 <p>@Html.ActionLink("Back to Contractor List", "Index")</p>

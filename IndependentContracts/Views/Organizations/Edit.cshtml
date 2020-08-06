@@ -2,15 +2,13 @@
   Layout = "_Layout";
 }
 
-@model IndependentContracts.Models.Client
+@model IndependentContracts.Models.Organization
 
-<h2>Edit</h2>
-
-<h4>Edit this client: @Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.Name)</h4>
+<h2>Edit this Organization</h2>
 
 @using (Html.BeginForm())
 {
-  @Html.HiddenFor(model => model.ClientId)
+  @Html.HiddenFor(model => model.OrganizationId)
 <div class="form-group">
   @Html.LabelFor(model => model.Name)
   @Html.EditorFor(model => model.Name, new { @class = "form-control", @required = true})
@@ -19,4 +17,4 @@
   
   <input type="submit" value="Save" />
   }
-  <p>@Html.ActionLink("Back to clients list", "Index")</p>
+  <p>@Html.ActionLink("Organization list", "Index")</p>

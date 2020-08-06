@@ -11,7 +11,7 @@
 {
   @Html.HiddenFor(model => model.ArmoryId)
 <div class="form-group">
-  @* @Html.LabelFor(model => model.WeaponName) *@
+  @Html.LabelFor(model => model.WeaponName, "Weapon")<br>
   @Html.EditorFor(model => model.WeaponName, new { @class = "form-control", @required = true})
 </div>
 
