@@ -24,6 +24,7 @@ namespace IndependentContracts.Controllers
 
     public ActionResult Create()
     {
+      ViewBag.Orgs = new SelectList(_db.Organizations, "OrganizationId", "Name");
       return View();
     }
 
@@ -40,13 +41,15 @@ namespace IndependentContracts.Controllers
       var thisClient = _db.Clients
           .Include(client => client.Contractors)
           .ThenInclude(join => join.Contractor)
+          .Include(client=>client.Organization)
           .FirstOrDefault(client => client.ClientId == id);
       return View(thisClient);
     }
 
     public ActionResult Edit(int id)
     {
-      var thisClient = _db.Clients.FirstOrDefault(client => client.ClientId == id);
+      var thisClient = _db.Clients.Include(client=>client.Organization).FirstOrDefault(client => client.ClientId == id);
+      ViewBag.Orgs = new SelectList(_db.Organizations, "OrganizationId", "Name");
       return View(thisClient);
     }
 

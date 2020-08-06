@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model IndependentContracts.Models.Client
+
+<h1>Add Contractor for Client</h1>
+<hr />
+<h3>@Model.Name</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.ClientId)
+
+    @Html.Label("Select Contractor")
+    @Html.DropDownList("ContractorId")
+
+    <input type="submit" value="Save" class="btn btn-primary" />
+}
+
+<p>@Html.ActionLink("Back to Client List", "Index")</p>

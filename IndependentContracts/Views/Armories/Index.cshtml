@@ -3,20 +3,20 @@
 }
 
 @using IndependentContracts.Models;
-@model List<IndependentContracts.Models.Client>;
+@model List<IndependentContracts.Models.Armory>;
 
 <h1>Clients</h1>
 
 @if (@Model.Count == 0)
 {
-  <h3>No Clients have been added yet!</h3>
+  <h3>No Weapons have been added yet!</h3>
 } 
 
-@foreach (Client client in Model)
+@foreach (Armory armory in Model)
 {
-  <li>@Html.ActionLink($"{client.Name}", "Details", new { id = client.ClientId })</li>
+  <li>@Html.ActionLink($"{armory.WeaponName}", "Details", new { id = armory.ArmoryId })</li>
 }
 
-<p>@Html.ActionLink("Add New Client", "Create")</p>
+<p>@Html.ActionLink("Add New Weapon", "Create")</p>
 
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
