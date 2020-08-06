@@ -1,0 +1,30 @@
+@{
+  Layout = "_Layout";
+}
+
+@using IndependentContracts.Models;
+@model IndependentContracts.Models.Organization;
+
+<h2>Organization Details</h2>
+<hr />
+<h3>@Model.Name</h3>
+<hr />
+<ul>
+@if (@Model.Clients.Count == 0)
+{
+  <p>This Organization does not contain any members.</p>
+}
+else
+{
+  <h4>Members</h4>
+  @foreach(var client in Model.Clients)
+  {
+    <li>@Html.ActionLink($"{@client.Name}", "Details", "Clients", new {id = client.ClientId})</li>
+  }
+}
+<hr />
+
+<p>@Html.ActionLink("Back to Organizations", "Index")</p>
+<p>@Html.ActionLink("Edit Organization", "Edit", new { id = Model.OrganizationId })</p>
+<p>@Html.ActionLink("Delete Organization", "Delete", new { id = Model.OrganizationId })</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

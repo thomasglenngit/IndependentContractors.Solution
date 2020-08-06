@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model IndependentContracts.Models.Armory
+
+<h2>Edit Weapon</h2>
+<hr/>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.ArmoryId)
+<div class="form-group">
+  @Html.LabelFor(model => model.WeaponName, "Weapon")<br>
+  @Html.EditorFor(model => model.WeaponName, new { @class = "form-control", @required = true})
+</div>
+
+  
+  <input type="submit" value="Save" />
+  }
+  <p>@Html.ActionLink("Back to armories list", "Index")</p>
+  <p>@Html.ActionLink("Home", "Index", "Home")</p>

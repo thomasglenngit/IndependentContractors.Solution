@@ -4,7 +4,7 @@
 
 @model IndependentContracts.Models.Contractor
 
-<h1>Add Client for Contractor</h1>
+<h1>Add Weapon for Contractor</h1>
 <hr />
 <h3>@Model.Alias</h3>
 
@@ -12,8 +12,8 @@
 {
   @Html.HiddenFor(model => model.ContractorId)
 
-  @Html.Label("Select Client")
-  @Html.DropDownList("ClientId", null, new {@class = "form-control"})
+  @Html.Label("Select Weapon")
+  @Html.DropDownList("ArmoryId", null, new {@class = "form-control"})
 
   <input type="submit" value="Save" class="btn btn-primary" />
 }

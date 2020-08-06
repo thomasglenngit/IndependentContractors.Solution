@@ -18,12 +18,13 @@ namespace IndependentContracts.Controllers
 
     public ActionResult Index()
     {
-      List<Client> model = _db.Clients.ToList();
+      List<Client> model = _db.Clients.Include(orgs=>orgs.Organization).ToList();
       return View(model);
     }
 
     public ActionResult Create()
     {
+      ViewBag.OrganizationId = new SelectList(_db.Organizations, "OrganizationId", "Name");
       return View();
     }
 
@@ -40,13 +41,15 @@ namespace IndependentContracts.Controllers
       var thisClient = _db.Clients
           .Include(client => client.Contractors)
           .ThenInclude(join => join.Contractor)
+          .Include(client=>client.Organization)
           .FirstOrDefault(client => client.ClientId == id);
       return View(thisClient);
     }
 
     public ActionResult Edit(int id)
     {
-      var thisClient = _db.Clients.FirstOrDefault(client => client.ClientId == id);
+      var thisClient = _db.Clients.Include(client=>client.Organization).FirstOrDefault(client => client.ClientId == id);
+      ViewBag.OrganizationId = new SelectList(_db.Organizations, "OrganizationId", "Name");
       return View(thisClient);
     }
 
@@ -76,13 +79,20 @@ namespace IndependentContracts.Controllers
     public ActionResult AddContractor(int id)
     {
     var thisClient = _db.Clients.FirstOrDefault(clients => clients.ClientId == id);
-    ViewBag.ContractorId = new SelectList(_db.Contractors, "ContractorId", "Name");
+    ViewBag.ContractorId = new SelectList(_db.Contractors, "ContractorId", "Alias");
     return View(thisClient);
     }
 
     [HttpPost]
     public ActionResult AddContractor(Client client, int ContractorId)
     {
+      var testvariable = _db.ClientContractor.FirstOrDefault(join=>join.ClientId == client.ClientId && join.ContractorId == ContractorId);
+
+      if(testvariable != null)
+      {
+      return RedirectToAction("Details", new {id=client.ClientId});
+      }
+
       if (ContractorId != 0)
       {
       _db.ClientContractor.Add(new ClientContractor() { ContractorId = ContractorId, ClientId = client.ClientId });

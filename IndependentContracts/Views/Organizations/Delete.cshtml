@@ -2,9 +2,9 @@
   Layout = "_Layout";
 }
 
-@model IndependentContracts.Models.Client
+@model IndependentContracts.Models.Organization
 
-<h2>Are you sure you want to delete this client?</h2>
+<h2>Are you sure you want to delete this Organization?</h2>
 
 <p>@Model.Name</p>
 
@@ -12,5 +12,5 @@
 {
     <input type="submit" value="Delete" />
 }
-<p>@Html.ActionLink("Back to Clients", "Index")</p>
+<p>@Html.ActionLink("Back to Organization", "Index")</p>
 <p>@Html.ActionLink("Home", "Index", "Home")</p>

@@ -9,7 +9,6 @@
 
 <h3>Name: @Model.Alias</h3>
 <h4>Region: @Model.RegionOfOperation</h4>
-<h4>Weapon of Choice: @Model.WeaponOfChoice</h4>
 <hr />
 
 <h1>Clients</h1>
@@ -31,7 +30,31 @@ else
     }
   }
 }
+
+<h1>Weapons</h1>
+<hr />
+
+@if(@Model.Armories.Count == 0)
+{
+  <h3>This Contractor Has No Assigned Weapons</h3>
+}
+else
+{
+  @foreach(var join in Model.Armories)
+  {
+    <h4>@Html.ActionLink(@join.Armory.WeaponName, "Details", "Armorys", new {id = join.ArmoryId})</h4>
+    @using (Html.BeginForm("DeleteArmory", "Contractors"))
+    {
+      @Html.Hidden("joinId", @join.ContractorArmoryId)
+      <input type="submit" value="Delete" class="btn btn-warning"/>
+    }
+  }
+}
+
 <p>@Html.ActionLink("Back to Contractor List", "Index")</p>
 <p>@Html.ActionLink("Edit Contractor Details", "Edit", new { id = Model.ContractorId })</p>
 <p>@Html.ActionLink("Delete Contractor", "Delete", new { id = Model.ContractorId })</p>
 <p>@Html.ActionLink("Add a Client", "AddClient", new { id = Model.ContractorId })</p>
+<p>@Html.ActionLink("Add a Weapon", "AddArmory", new { id = Model.ContractorId })</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+@* <p>@Html.ActionLink("Add a Specialty", "AddSpecialty", new { id = Model.ArmoryId })</p> *@

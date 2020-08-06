@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model IndependentContracts.Models.Armory
+
+<h4>Add a new weapon</h4>
+@using (Html.BeginForm())
+{
+  <div class="form-group">
+    @Html.LabelFor(model => model.WeaponName)
+    @Html.TextBoxFor(model => model.WeaponName, new { @class = "form-control", @required = true})
+  </div>
+
+  <input type="submit" value="Add new weapon" />
+}
+<p>@Html.ActionLink("Show all Weapons", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+
+
+
+

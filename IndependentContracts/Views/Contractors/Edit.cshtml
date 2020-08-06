@@ -20,12 +20,9 @@
     @Html.LabelFor(model => model.RegionOfOperation)
     @Html.TextBoxFor(model => model.RegionOfOperation, new { @class = "form-control", @required = true})
   </div>
-  <div class="form-group">
-    @Html.LabelFor(model => model.WeaponOfChoice)
-    @Html.TextBoxFor(model => model.WeaponOfChoice, new { @class = "form-control", @require = true})
-  </div>
   <input type="submit" value="Edit Contractor" class="btn btn-success" />
 }
 
 <hr />
 <p>@Html.ActionLink("Back to Contractor List", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

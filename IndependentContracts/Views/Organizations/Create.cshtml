@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model IndependentContracts.Models.Organization
+
+<h4>Add a new Organization</h4>
+@using (Html.BeginForm())
+{
+  <div class="form-group">
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @required = true})
+  </div>
+
+  <input type="submit" value="Add new Organization" />
+}
+<p>@Html.ActionLink("Show all organizations", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+
+
+
+

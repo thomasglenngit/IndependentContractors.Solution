@@ -14,9 +14,13 @@
 <div class="form-group">
   @Html.LabelFor(model => model.Name)
   @Html.EditorFor(model => model.Name, new { @class = "form-control", @required = true})
+  <br>
+  @Html.Label("Select Organization")
+  @Html.DropDownList("OrganizationId", null, new {@class = "form-control"})
 </div>
 
   
   <input type="submit" value="Save" />
   }
   <p>@Html.ActionLink("Back to clients list", "Index")</p>
+  <p>@Html.ActionLink("Home", "Index", "Home")</p>

@@ -26,6 +26,8 @@ namespace IndependentContracts.Controllers
       var thisContractor = _db.Contractors
           .Include(contractor => contractor.Clients)
           .ThenInclude(join => join.Client)
+          .Include(contractor=>contractor.Armories)
+          .ThenInclude(join=>join.Armory)
           .FirstOrDefault(contractor => contractor.ContractorId == id);
       return View(thisContractor);
     }
@@ -66,6 +68,13 @@ namespace IndependentContracts.Controllers
     [HttpPost]
     public ActionResult AddClient(Contractor contractor, int ClientId)
     {
+      var testvariable = _db.ClientContractor.FirstOrDefault(join=>join.ClientId == ClientId && join.ContractorId == contractor.ContractorId);
+
+      if(testvariable != null)
+      {
+      return RedirectToAction("Details", new {id=contractor.ContractorId});
+      }
+
       if (ClientId != 0)
       {
       _db.ClientContractor.Add(new ClientContractor() { ClientId = ClientId, ContractorId = contractor.ContractorId });
@@ -96,6 +105,40 @@ namespace IndependentContracts.Controllers
       _db.ClientContractor.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
+    }
+
+    public ActionResult AddArmory(int id)
+    {
+      var thisContractor = _db.Contractors.FirstOrDefault(contractors => contractors.ContractorId == id);
+      ViewBag.ArmoryId = new SelectList(_db.Armories, "ArmoryId", "WeaponName");
+      return View(thisContractor);
+    }
+
+    [HttpPost]
+    public ActionResult AddArmory(Contractor contractor, int ArmoryId)
+    {
+      var testvariable = _db.ContractorArmory.FirstOrDefault(join=>join.ArmoryId == ArmoryId && join.ContractorId == contractor.ContractorId);
+
+      if(testvariable != null)
+      {
+      return RedirectToAction("Details", new {id=contractor.ContractorId});
+      }
+
+      if (ArmoryId != 0)
+      {
+      _db.ContractorArmory.Add(new ContractorArmory() { ArmoryId = ArmoryId, ContractorId = contractor.ContractorId });
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Details", new {id=contractor.ContractorId});
+    }
+
+    [HttpPost]
+    public ActionResult DeleteArmory(int joinId)
+    {
+      var joinEntry = _db.ContractorArmory.FirstOrDefault(entry => entry.ContractorArmoryId == joinId);
+      _db.ContractorArmory.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Details", new {id=joinEntry.ContractorId});
     }
   }
 }
