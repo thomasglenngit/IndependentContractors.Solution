@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model IndependentContracts.Models.Client
+
+<h2>Edit</h2>
+
+<h4>Edit this client: @Html.DisplayFor(model => model.Name) @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.ClientId)
+<div class="form-group">
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name, new { @class = "form-control", @required = true})
+</div>
+
+  
+  <input type="submit" value="Save" />
+  }
+  <p>@Html.ActionLink("Back to clients list", "Index")</p>

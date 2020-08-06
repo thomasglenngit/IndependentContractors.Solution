@@ -18,7 +18,7 @@ namespace IndependentContracts.Controllers
 
     public ActionResult Index()
     {
-      List<Client> model = _db.Clients.ToList();
+      List<Client> model = _db.Clients.Include(orgs=>orgs.Organization).ToList();
       return View(model);
     }
 

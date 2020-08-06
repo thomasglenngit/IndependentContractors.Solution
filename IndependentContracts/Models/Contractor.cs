@@ -7,11 +7,13 @@ namespace IndependentContracts.Models
     public Contractor()
     {
       this.Clients = new HashSet<ClientContractor>();
+      this.Armories = new HashSet<ContractorArmory>();
     }
     public int ContractorId {get;set;}
     public string Alias {get;set;}
     public string RegionOfOperation {get;set;}
     public string WeaponOfChoice {get;set;}
     public virtual ICollection<ClientContractor> Clients {get;set;}
+    public virtual ICollection<ContractorArmory> Armories {get;set;}
   }
 }

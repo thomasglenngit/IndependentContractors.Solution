@@ -8,10 +8,6 @@
 <h2>Client Details</h2>
 <hr />
 <h3>@Model.Name</h3>
-<ul>
-  <li>Organization: @Html.ActionLink($"{Model.Organization}", "Details", "Organizations", new {id = Model.OrganizationId})</li>
-  <li>Account Created: @Html.ValueFor(client=>client.accountCreationDate, "{0:MM/dd/yyyy}")</li>
-</ul>
 <hr />
 <ul>
 @if (@Model.Contractors.Count == 0)

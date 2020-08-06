@@ -11,8 +11,10 @@ namespace IndependentContracts.Models
       this.Contractors = new HashSet<ClientContractor>();
     }
     public int ClientId {get;set;}
+    public int? OrganizationId {get;set;}
     public string Name {get;set;}
     public DateTime accountCreationDate {get;set;} = DateTime.Now;
     public virtual ICollection<ClientContractor> Contractors {get;set;}
+    public virtual Organization Organization {get;set;}
   }
 }
