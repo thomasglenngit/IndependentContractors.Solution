@@ -14,8 +14,9 @@
 <div class="form-group">
   @Html.LabelFor(model => model.Name)
   @Html.EditorFor(model => model.Name, new { @class = "form-control", @required = true})
+  <br>
   @Html.Label("Select Organization")
-  @Html.DropDownList("Orgs")
+  @Html.DropDownList("Orgs", null, new {@class = "form-control"})
 </div>
 
   

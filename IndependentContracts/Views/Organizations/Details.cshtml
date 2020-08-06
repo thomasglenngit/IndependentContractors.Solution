@@ -19,7 +19,7 @@ else
   <h4>Contractors</h4>
   @foreach(var join in Model.Contractors)
   {
-    <li>@Html.ActionLink($"{@join.Contractor.Alias}, {@join.Contractor.RegionOfOperation}, {@join.Contractor.WeaponOfChoice}", "Details", "Contractors", new {id = join.ContractorId})</li>
+    <li>@Html.ActionLink($"{@join.Contractor.Alias}, {@join.Contractor.RegionOfOperation}", "Details", "Contractors", new {id = join.ContractorId})</li>
   }
   <hr />
   @* <h4>Specialties</h4>

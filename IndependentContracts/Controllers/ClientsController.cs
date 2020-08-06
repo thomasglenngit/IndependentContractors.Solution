@@ -79,7 +79,7 @@ namespace IndependentContracts.Controllers
     public ActionResult AddContractor(int id)
     {
     var thisClient = _db.Clients.FirstOrDefault(clients => clients.ClientId == id);
-    ViewBag.ContractorId = new SelectList(_db.Contractors, "ContractorId", "Name");
+    ViewBag.ContractorId = new SelectList(_db.Contractors, "ContractorId", "Alias");
     return View(thisClient);
     }
 
