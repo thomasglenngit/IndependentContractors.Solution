@@ -19,8 +19,7 @@ else
   <h4>Members</h4>
   @foreach(var client in Model.Clients)
   {
-    <li><p>@Html.ActionLink($"{@client.Name}", "Details", "Clients", new {id = client.ClientId})</p> 
-        <p>{@client.accountCreationDate}"</p></li>
+    <li>@Html.ActionLink($"{@client.Name}", "Details", "Clients", new {id = client.ClientId})</li>
   }
 }
 <hr />

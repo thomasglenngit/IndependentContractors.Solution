@@ -24,7 +24,7 @@ namespace IndependentContracts.Controllers
 
     public ActionResult Create()
     {
-      ViewBag.Orgs = new SelectList(_db.Organizations, "OrganizationId", "Name");
+      ViewBag.OrganizationId = new SelectList(_db.Organizations, "OrganizationId", "Name");
       return View();
     }
 
@@ -49,7 +49,7 @@ namespace IndependentContracts.Controllers
     public ActionResult Edit(int id)
     {
       var thisClient = _db.Clients.Include(client=>client.Organization).FirstOrDefault(client => client.ClientId == id);
-      ViewBag.Orgs = new SelectList(_db.Organizations, "OrganizationId", "Name");
+      ViewBag.OrganizationId = new SelectList(_db.Organizations, "OrganizationId", "Name");
       return View(thisClient);
     }
 
@@ -86,6 +86,13 @@ namespace IndependentContracts.Controllers
     [HttpPost]
     public ActionResult AddContractor(Client client, int ContractorId)
     {
+      var testvariable = _db.ClientContractor.FirstOrDefault(join=>join.ClientId == client.ClientId && join.ContractorId == ContractorId);
+
+      if(testvariable != null)
+      {
+      return RedirectToAction("Details", new {id=client.ClientId});
+      }
+
       if (ContractorId != 0)
       {
       _db.ClientContractor.Add(new ClientContractor() { ContractorId = ContractorId, ClientId = client.ClientId });

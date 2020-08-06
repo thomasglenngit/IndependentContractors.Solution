@@ -68,6 +68,13 @@ namespace IndependentContracts.Controllers
     [HttpPost]
     public ActionResult AddClient(Contractor contractor, int ClientId)
     {
+      var testvariable = _db.ClientContractor.FirstOrDefault(join=>join.ClientId == ClientId && join.ContractorId == contractor.ContractorId);
+
+      if(testvariable != null)
+      {
+      return RedirectToAction("Details", new {id=contractor.ContractorId});
+      }
+
       if (ClientId != 0)
       {
       _db.ClientContractor.Add(new ClientContractor() { ClientId = ClientId, ContractorId = contractor.ContractorId });
