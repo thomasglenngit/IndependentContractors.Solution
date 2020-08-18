@@ -1,10 +1,10 @@
-air Salon
+Independent Contractors
 C#/.NET Project for Epicodus, 2020.07.31
 By Tyson Lackey and Thomas Glenn
 
 
 Description
-An interface for independent contractors to organize their contracts with bosses (in a many-to-many-to-many relationship).
+An interface for independent contractors to organize their contracts with bosses (in a many-to-many-to-many-to-one relationship).
 
 
 
