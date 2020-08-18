@@ -76,13 +76,56 @@ Click Start Import.
 
 Reopen the Navigator > Schemas tab. Right click and select Refresh All. Our new test database will appear.
 
-
-
 #### Query
 The following is the query information for access to this database on MySQL Workbench.
+
 ```
-
-
+CREATE DATABASE `independent_contracts` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+CREATE TABLE `Armories` (
+  `ArmoryId` int(11) NOT NULL AUTO_INCREMENT,
+  `WeaponName` longtext,
+  PRIMARY KEY (`ArmoryId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `ClientContractor` (
+  `ClientContractorId` int(11) NOT NULL AUTO_INCREMENT,
+  `ClientId` int(11) NOT NULL,
+  `ContractorId` int(11) NOT NULL,
+  PRIMARY KEY (`ClientContractorId`),
+  KEY `IX_ClientContractor_ClientId` (`ClientId`),
+  KEY `IX_ClientContractor_ContractorId` (`ContractorId`),
+  CONSTRAINT `FK_ClientContractor_Clients_ClientId` FOREIGN KEY (`ClientId`) REFERENCES `clients` (`ClientId`) ON DELETE CASCADE,
+  CONSTRAINT `FK_ClientContractor_Contractors_ContractorId` FOREIGN KEY (`ContractorId`) REFERENCES `contractors` (`ContractorId`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `Clients` (
+  `ClientId` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` longtext,
+  `accountCreationDate` datetime(6) NOT NULL,
+  `OrganizationId` int(11) DEFAULT NULL,
+  PRIMARY KEY (`ClientId`),
+  KEY `IX_Clients_OrganizationId` (`OrganizationId`),
+  CONSTRAINT `FK_Clients_Organizations_OrganizationId` FOREIGN KEY (`OrganizationId`) REFERENCES `organizations` (`OrganizationId`) ON DELETE RESTRICT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `ContractorArmory` (
+  `ContractorArmoryId` int(11) NOT NULL AUTO_INCREMENT,
+  `ContractorId` int(11) NOT NULL,
+  `ArmoryId` int(11) NOT NULL,
+  PRIMARY KEY (`ContractorArmoryId`),
+  KEY `IX_ContractorArmory_ArmoryId` (`ArmoryId`),
+  KEY `IX_ContractorArmory_ContractorId` (`ContractorId`),
+  CONSTRAINT `FK_ContractorArmory_Armories_ArmoryId` FOREIGN KEY (`ArmoryId`) REFERENCES `armories` (`ArmoryId`) ON DELETE CASCADE,
+  CONSTRAINT `FK_ContractorArmory_Contractors_ContractorId` FOREIGN KEY (`ContractorId`) REFERENCES `contractors` (`ContractorId`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `Contractors` (
+  `ContractorId` int(11) NOT NULL AUTO_INCREMENT,
+  `Alias` longtext,
+  `RegionOfOperation` longtext,
+  PRIMARY KEY (`ContractorId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `Organizations` (
+  `OrganizationId` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` longtext,
+  PRIMARY KEY (`OrganizationId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 ```
 #### Entity
 Entity is a framework which coordinates the properties associated with the project models, and the corresponding datatables stored in MySQL. In order to keep the database refreshed with user inputs and possible changes to the application models, the following commands must be made after these inputs and changes:
