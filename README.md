@@ -10,8 +10,6 @@ An interface for independent contractors to organize their contracts with bosses
 <!-- <img src="IndependentContractors/wwwroot/assets/images/LPLoginPg.png"          style="float: left; margin-right: 10px;" /> -->
 
 
-The following sitemap explains this database query relationship between Flavors and Treats in this schema.
-
 ## Database Structure
 <img src="IndependentContracts/wwwroot/assets/images/SchemaDiagram3.png"          style="float: left; margin-right: 10px;" />
 
