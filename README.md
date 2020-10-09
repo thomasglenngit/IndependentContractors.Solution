@@ -7,7 +7,7 @@
 ## Description
 An interface for independent contractors to organize their contracts with bosses (in a many-to-many-to-many-to-one relationship)
 
-<!-- <img src="IndependentContractors/wwwroot/assets/images/LPLoginPg.png"          style="float: left; margin-right: 10px;" /> -->
+<img src="https://www.desicomments.com/wp-content/uploads/Gangster-Squad-Hats.jpg"          style="float: left; margin-right: 10px;" />
 
 
 The following sitemap explains this database query relationship between Flavors and Treats in this schema.

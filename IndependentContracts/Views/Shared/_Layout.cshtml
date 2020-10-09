@@ -4,10 +4,46 @@
     <meta charset="utf-8">
     <title>The Client List</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/styles.css">
   </head>
   <body>
-     <div class="hero-image">
+    @* <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="/">Independent Contractors</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/Clients">Find Clients</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Contractors">Contractors</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Armories">Armories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/Contractors/Details/">Uz Guys</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="/Account">My Account</a>
+        </li>
+      </ul> *@
+      @* @if (User.Identity.IsAuthenticated == false) {
+      <ul class="navbar-nav ml-auto right">
+          <li class="nav-item">
+            <a class="nav-link" href="/Account/Login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Account/Register">Register</a>
+          </li>
+      </ul>
+      } *@
+      </div>
+    </nav>
+     @* <div class="hero-image">
       <div class="hero-text">
         <h1>The Client List</h1>
         <h2>Like all things in the business,</h2>
@@ -15,7 +51,7 @@
         <br>
         <br>
         <br>
-      </div>
+      </div> *@
     </div>
     <div class="container">
     @RenderBody()
