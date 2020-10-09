@@ -10,8 +10,6 @@ An interface for independent contractors to organize their contracts with bosses
 <img src="https://www.desicomments.com/wp-content/uploads/Gangster-Squad-Hats.jpg"          style="float: left; margin-right: 10px;" />
 
 
-The following sitemap explains this database query relationship between Flavors and Treats in this schema.
-
 ## Database Structure
 <img src="IndependentContracts/wwwroot/assets/images/SchemaDiagram3.png"          style="float: left; margin-right: 10px;" />
 
