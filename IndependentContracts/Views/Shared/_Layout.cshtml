@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/css/styles.css">
   </head>
   <body>
-    @* <nav class="navbar fixed-top navbar-expand-lg navbar-light">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="/">Independent Contractors</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -30,8 +30,8 @@
         <li class="nav-item">
           <a class="nav-link" href="/Account">My Account</a>
         </li>
-      </ul> *@
-      @* @if (User.Identity.IsAuthenticated == false) {
+      </ul> 
+       @if (User.Identity.IsAuthenticated == false) {
       <ul class="navbar-nav ml-auto right">
           <li class="nav-item">
             <a class="nav-link" href="/Account/Login">Login</a>
@@ -40,10 +40,10 @@
             <a class="nav-link" href="/Account/Register">Register</a>
           </li>
       </ul>
-      } *@
+      } 
       </div>
     </nav>
-     @* <div class="hero-image">
+      <div class="hero-image">
       <div class="hero-text">
         <h1>The Client List</h1>
         <h2>Like all things in the business,</h2>
@@ -51,8 +51,8 @@
         <br>
         <br>
         <br>
-      </div> *@
-    </div>
+      </div>
+    </div> 
     <div class="container">
     @RenderBody()
     </div>

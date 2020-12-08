@@ -5,6 +5,10 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+.nav-item {
+  padding: 10px;
+}
+
 .hero-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://s3.amazonaws.com/wvmetro-uploads-prod/2015/06/Making-of-the-Mob.jpg");
   height: 250px;
